@@ -138,6 +138,9 @@ def fetch_and_process_image(image_url: str, size: tuple = None):
         logger.error(f"Failed to fetch/process image from {image_url}: {e}")
         return None
 
+@app.route('/ping')
+def ping():
+    return jsonify({"status": "alive"}), 200
 @app.route('/outfit-image', methods=['GET'])
 @rate_limit(max_calls=10, period=60)
 def outfit_image():
